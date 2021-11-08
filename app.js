@@ -7,7 +7,9 @@ const errorHandler = require("./middleware/errorHandler");
 const userRoutes = require("./apis/user/users.routes");
 const app = express();
 const passport = require("passport");
-const { localStrategy } = require("./middleware/passport");
+const { localStrategy , jwtStrategy } = require("./middleware/passport");
+const categoriesRoutes = require('./apis/category/categories.routes');
+
 
 app.use(cors());
 
@@ -21,9 +23,11 @@ app.use(logger);
 // Passport
 app.use(passport.initialize());
 passport.use(localStrategy);
+passport.use(jwtStrategy);
 
 // Routes
 app.use("/api", userRoutes);
+app.use('/api/category', categoriesRoutes);
 
 app.use(errorHandler);
 
