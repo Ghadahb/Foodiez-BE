@@ -29,7 +29,7 @@ passport.use(jwtStrategy);
 // Routes
 app.use("/api", userRoutes);
 app.use('/api/category', categoriesRoutes);
-app.use('/api/recipes',recipesRoutes);
+app.use('/api/category',recipesRoutes);
 
 app.use(errorHandler);
 
