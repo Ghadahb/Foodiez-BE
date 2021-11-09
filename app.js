@@ -9,6 +9,7 @@ const app = express();
 const passport = require("passport");
 const { localStrategy , jwtStrategy } = require("./middleware/passport");
 const categoriesRoutes = require('./apis/category/categories.routes');
+const recipesRoutes = require('./apis/recipes/recipes.routes');
 
 
 app.use(cors());
@@ -28,6 +29,7 @@ passport.use(jwtStrategy);
 // Routes
 app.use("/api", userRoutes);
 app.use('/api/category', categoriesRoutes);
+app.use('/api/recipes',recipesRoutes);
 
 app.use(errorHandler);
 
