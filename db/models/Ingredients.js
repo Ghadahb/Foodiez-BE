@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-//const mongooseSlugPlugin = require("mongoose-slug-plugin");
+const mongooseSlugPlugin = require("mongoose-slug-plugin");
 const IngredientsSchema = mongoose.Schema(
   {
     name: {
@@ -10,6 +10,6 @@ const IngredientsSchema = mongoose.Schema(
 
   });
 
-//ReecipestSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
+ReecipestSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
 
 module.exports = mongoose.model("Ingredients", IngredientsSchema);
