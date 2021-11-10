@@ -7,5 +7,5 @@ const {
 
 
 
-router.get('/recipes', getRecipes);
+router.get('category/recipes', getRecipes);
 module.exports = router;
