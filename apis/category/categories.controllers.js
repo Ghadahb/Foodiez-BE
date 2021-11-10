@@ -13,6 +13,7 @@ exports.getCategories = async (req, res, next) => {
   }
 };
 
+// REVIEW: remove commented out code
 // exports.categoryCreate = async (req, res, next) => {
 //   try {
 //     if (req.file) {
@@ -36,13 +37,14 @@ exports.categoryCreate = async (req, res, next) => {
     }
     req.body.recipes = req.params.recipesId;
     const newCategory = await Category.create(req.body);
-   await newCategory.populate("recipes");
+    await newCategory.populate("recipes");
     return res.status(201).json(newCategory);
   } catch (error) {
     next(error);
   }
 };
 
+// REVIEW: remove commented out code
 // exports.recipesCreate = async (req, res, next) => {
 //   try {
 //     console.log("hiiiiii", req.user);
@@ -81,20 +83,21 @@ exports.categoryCreate = async (req, res, next) => {
 
 exports.recipesCreate = async (req, res, next) => {
   try {
+    // REVIEW: Remove console log if you're done with it
     console.log("hiiiiii", req.user);
     // if (!req.user._id.equals(req.recipes.owner._id)) {
     if (req.file) {
       req.body.image = `http://${req.get("host")}/media/${req.file.filename}`;
     }
     req.body.category = req.params.categoryId;
-    req.body.owner=req.user._id
+    req.body.owner = req.user._id;
     const newRecipes = await Recipes.create(req.body);
     await newRecipes.populate("category");
     await newRecipes.populate({
-      path:"owner",
-      select:"username"
-    })
-    
+      path: "owner",
+      select: "username",
+    });
+
     return res.status(201).json(newRecipes);
 
     // }

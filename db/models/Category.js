@@ -8,6 +8,7 @@ const CategorySchema = new mongoose.Schema(
 
     slug: String,
     recipes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Recipes" }],
+    // REVIEW: You don't need an owner for the user
     // owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   },
   { timestamps: true }

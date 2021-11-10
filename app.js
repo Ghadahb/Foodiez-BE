@@ -7,10 +7,9 @@ const errorHandler = require("./middleware/errorHandler");
 const userRoutes = require("./apis/user/users.routes");
 const app = express();
 const passport = require("passport");
-const { localStrategy , jwtStrategy } = require("./middleware/passport");
-const categoriesRoutes = require('./apis/category/categories.routes');
-const recipesRoutes = require('./apis/recipes/recipes.routes');
-
+const { localStrategy, jwtStrategy } = require("./middleware/passport");
+const categoriesRoutes = require("./apis/category/categories.routes");
+const recipesRoutes = require("./apis/recipes/recipes.routes");
 
 app.use(cors());
 
@@ -28,10 +27,15 @@ passport.use(jwtStrategy);
 
 // Routes
 app.use("/api", userRoutes);
-app.use('/api/category', categoriesRoutes);
-app.use('/api/category',recipesRoutes);
+// REVIEW: it should be /api/categories
+app.use("/api/category", categoriesRoutes);
+// REVIEW: Why is this /api/category?
+app.use("/api/category", recipesRoutes);
+// REVIEW: Your media route is missing, that's why your images won't work
 
 app.use(errorHandler);
 
 const PORT = 8002;
-app.listen(PORT, () => console.log(`Application is running on localhost: ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Application is running on localhost: ${PORT}`)
+);
