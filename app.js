@@ -10,6 +10,7 @@ const passport = require("passport");
 const { localStrategy , jwtStrategy } = require("./middleware/passport");
 const categoriesRoutes = require('./apis/category/categories.routes');
 const recipesRoutes = require('./apis/recipes/recipes.routes');
+const ingredientsRoutes = require('./apis/ingredients/ingredients.routes');
 const path = require("path");
 
 
@@ -30,12 +31,16 @@ passport.use(jwtStrategy);
 
 // Routes
 app.use("/api", userRoutes);
+
+app.use('/api/recipes',ingredientsRoutes);
+
 // app.use('/api/category', categoriesRoutes);
 // Testing
 app.use('/api', categoriesRoutes);
 // app.use('/api/category',recipesRoutes);
 //Testing
 app.use('/api/category/recipes',recipesRoutes);
+
 app.use("/media", express.static(path.join(__dirname, "media")));
 
 app.use(errorHandler);

@@ -6,10 +6,14 @@ const IngredientsSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  Image: {
+      type: String,
+      required: false,
+    },
+    recipes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Recipes" }],
 
   });
 
-ReecipestSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
+IngredientsSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
 
 module.exports = mongoose.model("Ingredients", IngredientsSchema);
