@@ -27,4 +27,8 @@ router.post(
   );
 
 
+
+
+router.get('category/recipes', getRecipes);
+
 module.exports = router;

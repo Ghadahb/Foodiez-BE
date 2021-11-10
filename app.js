@@ -31,9 +31,16 @@ passport.use(jwtStrategy);
 
 // Routes
 app.use("/api", userRoutes);
-app.use('/api/category', categoriesRoutes);
-app.use('/api/category',recipesRoutes);
+
 app.use('/api/recipes',ingredientsRoutes);
+
+// app.use('/api/category', categoriesRoutes);
+// Testing
+app.use('/api', categoriesRoutes);
+// app.use('/api/category',recipesRoutes);
+//Testing
+app.use('/api/category/recipes',recipesRoutes);
+
 app.use("/media", express.static(path.join(__dirname, "media")));
 
 app.use(errorHandler);
