@@ -4,5 +4,8 @@ const router = express.Router();
 const {
     getRecipes,
 } = require('./recipes.controllers');
-router.get('/', getRecipes);
+
+
+
+router.get('/recipes', getRecipes);
 module.exports = router;
