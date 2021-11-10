@@ -8,6 +8,7 @@ const RecipesSchema = mongoose.Schema({
   },
    description:{String},
   category: [{ type: mongoose.Schema.Types.ObjectId, ref: "Category" }],
+  ingredients: [{ type: mongoose.Schema.Types.ObjectId, ref: "Ingredients" }],
   owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 });
 
