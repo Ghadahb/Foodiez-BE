@@ -28,8 +28,7 @@ router.post(
 );
 router.post(
   "/:categoryId/recipes",
-
-
+  passport.authenticate("jwt", { session: false }),
   upload.single("image"),
   recipesCreate
 );
