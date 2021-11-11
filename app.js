@@ -7,13 +7,11 @@ const errorHandler = require("./middleware/errorHandler");
 const userRoutes = require("./apis/user/users.routes");
 const app = express();
 const passport = require("passport");
-const { localStrategy , jwtStrategy } = require("./middleware/passport");
-const categoriesRoutes = require('./apis/category/categories.routes');
-const recipesRoutes = require('./apis/recipes/recipes.routes');
-const ingredientsRoutes = require('./apis/ingredients/ingredients.routes');
+const { localStrategy, jwtStrategy } = require("./middleware/passport");
+const categoriesRoutes = require("./apis/category/categories.routes");
+const recipesRoutes = require("./apis/recipes/recipes.routes");
+const ingredientsRoutes = require("./apis/ingredients/ingredients.routes");
 const path = require("path");
-
-
 
 app.use(cors());
 
@@ -32,18 +30,20 @@ passport.use(jwtStrategy);
 // Routes
 app.use("/api", userRoutes);
 
-app.use('/api/recipes',ingredientsRoutes);
+app.use("/api/recipes", ingredientsRoutes);
 
 // app.use('/api/category', categoriesRoutes);
 // Testing
-app.use('/api', categoriesRoutes);
+app.use("/api/category", categoriesRoutes);
 // app.use('/api/category',recipesRoutes);
 //Testing
-app.use('/api/category/recipes',recipesRoutes);
+app.use("/api/category", recipesRoutes);
 
 app.use("/media", express.static(path.join(__dirname, "media")));
 
 app.use(errorHandler);
 
 const PORT = 8002;
-app.listen(PORT, () => console.log(`Application is running on localhost: ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Application is running on localhost: ${PORT}`)
+);
