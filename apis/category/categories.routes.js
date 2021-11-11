@@ -19,9 +19,9 @@ router.param("recipesId", async (req, res, next, recipesId) => {
   }
 });
 
-router.get("/", getCategories);
+router.get("", getCategories);
 router.post(
-  "/",
+  "",
   passport.authenticate("jwt", { session: false }),
   upload.single("image"),
   categoryCreate
